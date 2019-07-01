@@ -1,4 +1,4 @@
-package com.vanny96.userposts.repositories;
+package com.vanny96.userposts.repositories.users;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,53 +6,53 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.vanny96.userposts.models.User;
+import com.vanny96.userposts.models.AppUser;
+import com.vanny96.userposts.models.Post;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @Profile("hashmap")
-public class UserRepositoryHash implements UserRepository {
+public class UserRepositoryHash implements UserRepository{
 
-  private Map<Integer, User> users = new HashMap<Integer, User>();
+  private Map<Integer, AppUser> users = new HashMap<Integer, AppUser>();
 
   public UserRepositoryHash(){
-    User user1 = new User();
+    AppUser user1 = new AppUser();
     user1.setName("Bob");
     user1.setEmail("bob@la.bob");
     user1.setId(1);
+    user1.setPosts(new ArrayList<Post>());
 
     users.put(1, user1);
 
-    User user2 = new User();
+    AppUser user2 = new AppUser();
     user2.setName("Legolas");
     user2.setEmail("third@impact.bob");
     user2.setId(2);
+    user2.setPosts(new ArrayList<Post>());
+
 
     users.put(2, user2);
   }
 
-  @Override
-  public List<User> usersList() {
-    return new ArrayList<User>(users.values());
+  
+  public List<AppUser> usersList() {
+    return new ArrayList<AppUser>(users.values());
   }
 
-  @Override
-  public User getUser(Integer id) {
+  public AppUser getUser(Integer id) {
     return users.get(id);
   }
 
-  @Override
-  public User saveOrUpdateUser(User user) {
-    if(user != null){
-      System.out.println("Repository " + user.getName());
-      
+  public AppUser saveOrUpdateUser(AppUser user) {
+    if(user != null){      
       if(!users.values().contains(user)){
         user.setId(nextId());
+        user.setPosts(new ArrayList<Post>());
       }
 
-      System.out.println("repository " + user.getId());
       users.put(user.getId(), user);
       return user;
 
@@ -61,9 +61,8 @@ public class UserRepositoryHash implements UserRepository {
     }
   }
 
-  @Override
-  public User removeUser(Integer id) {
-    User removedUser = getUser(id);
+  public AppUser removeUser(Integer id) {
+    AppUser removedUser = getUser(id);
     users.remove(id);
 
     return removedUser;

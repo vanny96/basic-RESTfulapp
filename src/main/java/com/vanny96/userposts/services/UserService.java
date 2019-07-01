@@ -2,8 +2,8 @@ package com.vanny96.userposts.services;
 
 import java.util.List;
 
-import com.vanny96.userposts.models.User;
-import com.vanny96.userposts.repositories.UserRepository;
+import com.vanny96.userposts.models.AppUser;
+import com.vanny96.userposts.repositories.users.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,19 +17,19 @@ public class UserService{
     this.userRepository = userRepository;
   }
 
-  public List<User> usersList(){
+  public List<AppUser> usersList(){
     return userRepository.usersList();
   }
 
-  public User getUser(Integer id){
+  public AppUser getUser(Integer id){
     return userRepository.getUser(id);
   }
 
-  public User saveOrUpdateUser(User user){
+  public AppUser saveOrUpdateUser(AppUser user){
     return userRepository.saveOrUpdateUser(user);
   }
 
-  public User removeUser(Integer id){
+  public AppUser removeUser(Integer id){
     return userRepository.removeUser(id);
   }
 

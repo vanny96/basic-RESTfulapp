@@ -2,7 +2,7 @@ package com.vanny96.userposts.controllers;
 
 import java.util.List;
 
-import com.vanny96.userposts.models.User;
+import com.vanny96.userposts.models.AppUser;
 import com.vanny96.userposts.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,22 +22,22 @@ public class UsersController{
   }
 
   @RequestMapping("/users")
-  public List<User> usersList(){
+  public List<AppUser> usersList(){
     return userService.usersList();
   }
 
   @RequestMapping("/user/{id}")
-  public User getUser(@PathVariable Integer id){
+  public AppUser getUser(@PathVariable Integer id){
     return userService.getUser(id);
   }
 
   @RequestMapping("/user/{id}/delete")
-  public User removeUser(@PathVariable Integer id){
+  public AppUser removeUser(@PathVariable Integer id){
     return userService.removeUser(id);
   }
 
   @RequestMapping(value = "/users", method = RequestMethod.POST)
-  public User addUser(@RequestBody User user){
+  public AppUser addUser(@RequestBody AppUser user){
     System.out.println(user.getName());
     return userService.saveOrUpdateUser(user);
   }
