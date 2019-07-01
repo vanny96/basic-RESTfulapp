@@ -1,4 +1,4 @@
-package com.vanny96.UserPosts;
+package com.vanny96.userposts;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

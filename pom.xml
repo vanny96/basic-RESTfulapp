@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.vanny96</groupId>
-	<artifactId>UserPosts</artifactId>
+	<artifactId>userposts</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>UserPosts</name>
 	<description>Demo project for Spring Boot</description>
@@ -47,6 +47,12 @@
 					<artifactId>junit</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.199</version>
 		</dependency>
 	</dependencies>
 
