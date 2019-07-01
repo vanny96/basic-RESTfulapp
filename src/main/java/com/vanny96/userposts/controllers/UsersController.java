@@ -38,6 +38,7 @@ public class UsersController{
 
   @RequestMapping(value = "/users", method = RequestMethod.POST)
   public User addUser(@RequestBody User user){
+    System.out.println(user.getName());
     return userService.saveOrUpdateUser(user);
   }
 }

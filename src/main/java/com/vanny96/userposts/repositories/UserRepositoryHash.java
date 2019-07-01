@@ -17,6 +17,22 @@ public class UserRepositoryHash implements UserRepository {
 
   private Map<Integer, User> users = new HashMap<Integer, User>();
 
+  public UserRepositoryHash(){
+    User user1 = new User();
+    user1.setName("Bob");
+    user1.setEmail("bob@la.bob");
+    user1.setId(1);
+
+    users.put(1, user1);
+
+    User user2 = new User();
+    user2.setName("Legolas");
+    user2.setEmail("third@impact.bob");
+    user2.setId(2);
+
+    users.put(2, user2);
+  }
+
   @Override
   public List<User> usersList() {
     return new ArrayList<User>(users.values());
@@ -30,11 +46,13 @@ public class UserRepositoryHash implements UserRepository {
   @Override
   public User saveOrUpdateUser(User user) {
     if(user != null){
-
+      System.out.println("Repository " + user.getName());
+      
       if(!users.values().contains(user)){
         user.setId(nextId());
       }
 
+      System.out.println("repository " + user.getId());
       users.put(user.getId(), user);
       return user;
 
