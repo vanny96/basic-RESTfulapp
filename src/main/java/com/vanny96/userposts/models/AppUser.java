@@ -20,6 +20,7 @@ public class AppUser{
   private Integer id;
 
   @Version
+  @JsonIgnore
   private Integer version;
 
   private String name;

@@ -17,6 +17,7 @@ public class Post{
   private Integer id;
 
   @Version
+  @JsonIgnore
   private Integer version;
 
   private String title;
