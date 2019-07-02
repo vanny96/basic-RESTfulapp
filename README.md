@@ -39,7 +39,7 @@ JSON:
 
 #### Post model
 
-To add an user model to the database you will have to add a JSON body to the POST request formatted as follow and since it is required for a post to be postd by an user, you will have to specify in a header the user id.
+To add a post model to the database you will have to add a JSON body to the POST request formatted as follow and since it is required for a post to be postd by an user, you will have to specify in a header the user id.
 
 JSON:
 ```JSON
