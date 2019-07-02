@@ -8,6 +8,7 @@ import javax.persistence.PersistenceUnit;
 
 import com.vanny96.userposts.models.AppUser;
 
+import org.hibernate.Hibernate;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
@@ -34,10 +35,14 @@ public class UserRepositoryDaoImpl implements UserRepository {
   }
 
   @Override
-  public AppUser getUser(Integer id) {
+  public AppUser getUser(Integer id, boolean loadPosts) {
     EntityManager em = emf.createEntityManager();
 
     AppUser user = em.find(AppUser.class, id);
+    
+    if(loadPosts){
+      Hibernate.initialize(user.getPosts());
+    } 
 
     em.close();
 

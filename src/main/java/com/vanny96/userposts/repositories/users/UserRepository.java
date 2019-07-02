@@ -8,7 +8,11 @@ public interface UserRepository {
 
   List<AppUser> usersList();
 
-  AppUser getUser(Integer id);
+  default AppUser getUser(Integer id){
+    return getUser(id, false);
+  }
+
+  AppUser getUser(Integer id, boolean loadPosts);
 
   AppUser saveOrUpdateUser(AppUser user);
 

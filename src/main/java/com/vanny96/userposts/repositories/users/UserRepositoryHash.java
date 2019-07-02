@@ -42,8 +42,10 @@ public class UserRepositoryHash implements UserRepository{
     return new ArrayList<AppUser>(users.values());
   }
 
-  public AppUser getUser(Integer id) {
-    return users.get(id);
+  public AppUser getUser(Integer id, boolean loadPosts) {
+    AppUser user = users.get(id);
+    user.getPosts();
+    return user;
   }
 
   public AppUser saveOrUpdateUser(AppUser user) {

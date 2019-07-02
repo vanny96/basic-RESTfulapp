@@ -32,7 +32,7 @@ public class AppUser{
   @Column(name = "email", unique = true)
   private String email;
 
-  @OneToMany(mappedBy = "poster", orphanRemoval = true, fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "poster", orphanRemoval = true)
   @JsonIgnore
   private List<Post> posts;
 

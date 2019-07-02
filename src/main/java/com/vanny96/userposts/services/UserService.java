@@ -22,7 +22,11 @@ public class UserService{
   }
 
   public AppUser getUser(Integer id){
-    return userRepository.getUser(id);
+    return getUser(id, false);
+  }
+
+  public AppUser getUser(Integer id, boolean loadPosts){
+    return userRepository.getUser(id, loadPosts);
   }
 
   public AppUser saveOrUpdateUser(AppUser user){

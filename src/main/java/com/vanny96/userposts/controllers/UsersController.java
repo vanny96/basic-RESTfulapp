@@ -46,6 +46,6 @@ public class UsersController{
 
   @GetMapping("/user/{id}/posts")
   public List<Post> getUserPosts(@PathVariable Integer id){
-    return userService.getUser(id).getPosts();
+    return userService.getUser(id, true).getPosts();
   }
 }
