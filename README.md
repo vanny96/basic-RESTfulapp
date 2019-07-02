@@ -1,4 +1,4 @@
-# basic-RESTfulapp
+# RESTful WebApp 
 
 With this project I'm trying to make a very simple RESTfull web app in order to practice what I've learnt about spring until now. Every time I'll need to practice something I think I'll come here.
 
