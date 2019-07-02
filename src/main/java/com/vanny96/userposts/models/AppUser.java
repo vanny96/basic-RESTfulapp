@@ -4,15 +4,18 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name = "app_user")
 public class AppUser{
   @Id
   @GeneratedValue(generator = "user_generator")
@@ -23,12 +26,13 @@ public class AppUser{
   @JsonIgnore
   private Integer version;
 
+  @Column(name = "name")
   private String name;
 
-  @Column(unique = true)
+  @Column(name = "email", unique = true)
   private String email;
 
-  @OneToMany(mappedBy = "poster", orphanRemoval = true)
+  @OneToMany(mappedBy = "poster", orphanRemoval = true, fetch = FetchType.EAGER)
   @JsonIgnore
   private List<Post> posts;
 

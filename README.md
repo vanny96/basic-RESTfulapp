@@ -16,7 +16,7 @@ Path variables are distinguished by curly braces (e.g. `.../{id}`)
 
 * `GET .../users` returns a list of all the users
 * `GET .../user/{id}` returns a the user associated to the id
-* `GET .../user/{id}/delete` deletes the user associated to the id and returns it back
+* `DELETE .../user/{id}` deletes the user associated to the id and returns it back
 * `POST .../users` adds the user model described in the body (see below) to the database
 
 #### User model
@@ -34,8 +34,10 @@ JSON:
 
 * `GET .../posts` returns a list of all the posts
 * `GET .../post/{id}` returns a the user associated to the id
-* `GET .../post/{id}/delete` deletes the user associated to the id and returns it back
+* `DELETE .../post/{id}` deletes the user associated to the id and returns it back
 * `POST .../posts` adds the user model described in the body (see below) to the database
+
+* `GET .../user/{id}/posts` returns all of the user's posts
 
 #### Post model
 

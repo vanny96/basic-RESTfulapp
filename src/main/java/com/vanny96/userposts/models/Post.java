@@ -4,14 +4,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Version;
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name = "post")
 public class Post{
   @Id
   @GeneratedValue(generator = "post_generator")
@@ -22,13 +24,14 @@ public class Post{
   @JsonIgnore
   private Integer version;
 
+  @Column(name = "title")
   private String title;
 
-  @Column(length = 500)
+  @Column(name = "body", length = 500)
   private String body;
 
   @ManyToOne
-  @NotNull
+  @JoinColumn(name = "poster_id", nullable = false)
   private AppUser poster;
 
 
