@@ -9,6 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-Test
+<c:forEach items="${users}" var="user">
+	Name: <c:out value="${user.getName()}"/><br>
+</c:forEach>
 </body>
 </html>
