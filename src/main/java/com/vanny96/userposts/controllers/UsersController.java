@@ -5,7 +5,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,7 +38,7 @@ public class UsersController {
 		return model;
 	}
 
-	@DeleteMapping("/user/{id}")
+	@GetMapping("/user/{id}/delete")
 	public String removeUser(@PathVariable Integer id){
 		userService.removeUser(id);
 		return "redirect:/users";
