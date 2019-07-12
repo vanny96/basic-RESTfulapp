@@ -9,10 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	Name:
-	<c:out value="${user.getName() }"></c:out>
-	<br> Email:
-	<c:out value="${user.getEmail()}"></c:out>
+	Name: ${user.getName()}
+	<br> 
+	Email: ${user.getEmail()}
 	<br>
 
 	<div class="posts">

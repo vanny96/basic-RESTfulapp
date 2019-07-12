@@ -34,7 +34,6 @@ public class UsersController {
 	@GetMapping("/user/{id}")
 	public ModelAndView getUser(@PathVariable Integer id){
 		ModelAndView model = new ModelAndView("user-view");
-		userService.getUser(id);
 		model.addObject("user", userService.getUser(id, true));
 		
 		return model;
@@ -43,6 +42,14 @@ public class UsersController {
 	@DeleteMapping("/user/{id}")
 	public AppUser removeUser(@PathVariable Integer id){
 		return userService.removeUser(id);
+	}
+	
+	@GetMapping("/users/new")
+	public ModelAndView newUser(){
+		ModelAndView model = new ModelAndView("user-form");
+		model.addObject("user", new AppUser());
+		
+		return model;
 	}
 
 	@PostMapping("/users")
