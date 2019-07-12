@@ -10,7 +10,7 @@
 </head>
 <body>
 <c:forEach items="${users}" var="user">
-	Name: <c:out value="${user.getName()}"/><br>
+	Name: <c:out value="${user.getName()}"/> Email: value="${user.getEmail()}"<br>
 </c:forEach>
 </body>
 </html>

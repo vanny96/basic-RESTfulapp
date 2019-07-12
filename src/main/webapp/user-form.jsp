@@ -15,12 +15,12 @@
              <table>
                 <tr>
                     <td><form:label path="name">Name</form:label></td>
-                    <td><form:input path="name"/></td>
+                    <td><form:input path="name" required/></td>
                 </tr>
                 <tr>
                     <td><form:label path="email">
                       Email</form:label></td>
-                    <td><form:input path="email"/></td>
+                    <td><form:input type="email" path="email"/></td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Submit"/></td>
