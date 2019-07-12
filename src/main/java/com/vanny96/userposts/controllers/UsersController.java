@@ -1,6 +1,5 @@
 package com.vanny96.userposts.controllers;
 
-import java.util.List;
 
 import javax.validation.Valid;
 
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.vanny96.userposts.models.AppUser;
-import com.vanny96.userposts.models.Post;
 import com.vanny96.userposts.services.UserService;
 
 @Controller
@@ -42,8 +40,9 @@ public class UsersController {
 	}
 
 	@DeleteMapping("/user/{id}")
-	public AppUser removeUser(@PathVariable Integer id){
-		return userService.removeUser(id);
+	public String removeUser(@PathVariable Integer id){
+		userService.removeUser(id);
+		return "redirect:/users";
 	}
 	
 	@GetMapping("/users/new")
@@ -59,9 +58,12 @@ public class UsersController {
 		AppUser savedUser =userService.saveOrUpdateUser(user);
 		return "redirect:/user/"+savedUser.getId();
 	}
-
-	@GetMapping("/user/{id}/posts")
-	public List<Post> getUserPosts(@PathVariable Integer id){
-		return userService.getUser(id, true).getPosts();
+	
+	@GetMapping("/user/{id}/edit")
+	public ModelAndView editUser(@PathVariable Integer id){
+		ModelAndView model = new ModelAndView("user-form");
+		model.addObject("user", userService.getUser(id));	
+		return model;
 	}
+
 }
