@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@Profile("persistent")
+@Profile({"dev", "prod"})
 public class UserRepositoryDaoImpl implements UserRepository {
   private EntityManagerFactory emf;
 
@@ -55,7 +55,10 @@ public class UserRepositoryDaoImpl implements UserRepository {
 
     em.getTransaction().begin();
 
-    AppUser savedUser = em.merge(user);
+    AppUser savedUser;
+    if(user.getId() == null) {
+    	em.persist(user);
+    }
     em.getTransaction().commit();
 
     em.close();

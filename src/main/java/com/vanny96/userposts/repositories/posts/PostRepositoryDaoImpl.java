@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@Profile("persistent")
+@Profile({"dev", "prod"})
 public class PostRepositoryDaoImpl implements PostRepository {
   private EntityManagerFactory emf;
 
