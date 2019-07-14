@@ -12,6 +12,8 @@
           action="/users" modelAttribute="user">
           
           <form:hidden path="id"/> 
+          <form:hidden path="version"/> 
+          
              <table>
                 <tr>
                     <td><form:label path="name">Name</form:label></td>
