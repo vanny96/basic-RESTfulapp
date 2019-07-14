@@ -9,6 +9,7 @@ import javax.persistence.PersistenceUnit;
 import com.vanny96.userposts.models.AppUser;
 
 import org.hibernate.Hibernate;
+import org.hibernate.Session;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
@@ -55,15 +56,15 @@ public class UserRepositoryDaoImpl implements UserRepository {
 
     em.getTransaction().begin();
 
-    AppUser savedUser;
-    if(user.getId() == null) {
-    	em.persist(user);
-    }
+    System.out.println(user);
+    em.unwrap(Session.class).saveOrUpdate(user);
+    System.out.println(user);
+    
     em.getTransaction().commit();
 
     em.close();
 
-    return savedUser;
+    return user;
   }
 
   @Override
