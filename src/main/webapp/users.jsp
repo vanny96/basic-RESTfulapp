@@ -25,9 +25,9 @@
 			<tr>
 				<td>${user.getName()}</td>
 				<td>${user.getEmail()}</td>
-				<td><a href="/user/${user.getId()}">View</a></td>
-				<td><a href="/user/${user.getId()}/edit">Edit</a></td>
-				<td><a href="/user/${user.getId()}/delete">Delete</a></td>
+				<td class="link"><a href="/user/${user.getId()}">View</a></td>
+				<td class="link"><a href="/user/${user.getId()}/edit">Edit</a></td>
+				<td class="link"><a href="/user/${user.getId()}/delete">Delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>
