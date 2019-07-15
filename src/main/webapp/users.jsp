@@ -6,6 +6,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/generic.css" />">
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -19,13 +22,13 @@
 			<th>Delete</th>
 		</tr>
 		<c:forEach items="${users}" var="user">
-		<tr>
-			<td>${user.getName()}</td>
-			<td>${user.getEmail()}</td>
-			<td><a href="/user/${user.getId()}">View</a></td>
-			<td><a href="/user/${user.getId()}/edit">Edit</a></td>
-			<td><a href="/user/${user.getId()}/delete">Delete</a></td>
-		</tr>
+			<tr>
+				<td>${user.getName()}</td>
+				<td>${user.getEmail()}</td>
+				<td><a href="/user/${user.getId()}">View</a></td>
+				<td><a href="/user/${user.getId()}/edit">Edit</a></td>
+				<td><a href="/user/${user.getId()}/delete">Delete</a></td>
+			</tr>
 		</c:forEach>
 	</table>
 </body>
