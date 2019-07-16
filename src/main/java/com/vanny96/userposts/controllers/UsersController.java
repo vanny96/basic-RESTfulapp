@@ -25,14 +25,14 @@ public class UsersController {
 
 	@GetMapping("/users")
 	public ModelAndView usersList(){
-		ModelAndView model = new ModelAndView("users");
+		ModelAndView model = new ModelAndView("/users/users");
 		model.addObject("users", userService.usersList());
 		return model;
 	}
 
 	@GetMapping("/user/{id}")
 	public ModelAndView getUser(@PathVariable Integer id){
-		ModelAndView model = new ModelAndView("user-view");
+		ModelAndView model = new ModelAndView("/users/user-view");
 		model.addObject("user", userService.getUser(id, true));
 		
 		return model;
@@ -46,7 +46,7 @@ public class UsersController {
 	
 	@GetMapping("/users/new")
 	public ModelAndView newUser(){
-		ModelAndView model = new ModelAndView("user-form");
+		ModelAndView model = new ModelAndView("/users/user-form");
 		model.addObject("user", new AppUser());
 		
 		return model;
@@ -60,7 +60,7 @@ public class UsersController {
 	
 	@GetMapping("/user/{id}/edit")
 	public ModelAndView editUser(@PathVariable Integer id){
-		ModelAndView model = new ModelAndView("user-form");
+		ModelAndView model = new ModelAndView("/users/user-form");
 		model.addObject("user", userService.getUser(id));	
 		return model;
 	}

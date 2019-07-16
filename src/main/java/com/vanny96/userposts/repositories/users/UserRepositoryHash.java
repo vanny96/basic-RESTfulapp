@@ -8,7 +8,9 @@ import java.util.Map;
 
 import com.vanny96.userposts.models.AppUser;
 import com.vanny96.userposts.models.Post;
+import com.vanny96.userposts.repositories.posts.PostRepositoryHash;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
@@ -16,61 +18,70 @@ import org.springframework.stereotype.Repository;
 @Profile("hashmap")
 public class UserRepositoryHash implements UserRepository{
 
-  private Map<Integer, AppUser> users = new HashMap<Integer, AppUser>();
+	private Map<Integer, AppUser> users = new HashMap<Integer, AppUser>();
 
-  public UserRepositoryHash(){
-    AppUser user1 = new AppUser();
-    user1.setName("Bob");
-    user1.setEmail("bob@la.bob");
-    user1.setId(1);
-    user1.setPosts(new ArrayList<Post>());
+	private PostRepositoryHash postRepository;
 
-    users.put(1, user1);
+	@Autowired
+	public UserRepositoryHash(PostRepositoryHash postRepository){
+		this.postRepository = postRepository;
 
-    AppUser user2 = new AppUser();
-    user2.setName("Legolas");
-    user2.setEmail("third@impact.bob");
-    user2.setId(2);
-    user2.setPosts(new ArrayList<Post>());
+		AppUser user1 = new AppUser();
+		user1.setName("Bob");
+		user1.setEmail("bob@la.bob");
+		user1.setId(1);
+		user1.setPosts(new ArrayList<Post>());
+
+		users.put(1, user1);
+
+		AppUser user2 = new AppUser();
+		user2.setName("Legolas");
+		user2.setEmail("third@impact.bob");
+		user2.setId(2);
+		user2.setPosts(new ArrayList<Post>());
 
 
-    users.put(2, user2);
-  }
+		users.put(2, user2);
 
-  
-  public List<AppUser> usersList() {
-    return new ArrayList<AppUser>(users.values());
-  }
+		this.postRepository.savePost(new Post(null, null, "First post", "Body of first post", null), users.get(1));
+		this.postRepository.savePost(new Post(null, null, "Second post", "Body of second post", null), users.get(2));
 
-  public AppUser getUser(Integer id, boolean loadPosts) {
-    AppUser user = users.get(id);
-    user.getPosts();
-    return user;
-  }
+	}
 
-  public AppUser saveOrUpdateUser(AppUser user) {
-    if(user != null){      
-      if(!users.values().contains(user)){
-        user.setId(nextId());
-        user.setPosts(new ArrayList<Post>());
-      }
 
-      users.put(user.getId(), user);
-      return user;
+	public List<AppUser> usersList() {
+		return new ArrayList<AppUser>(users.values());
+	}
 
-    } else {
-      throw new RuntimeException("user can't be null");
-    }
-  }
+	public AppUser getUser(Integer id, boolean loadPosts) {
+		System.out.println(id);
+		AppUser user = users.get(id);
+		return user;
+	}
 
-  public AppUser removeUser(Integer id) {
-    AppUser removedUser = getUser(id);
-    users.remove(id);
+	public AppUser saveOrUpdateUser(AppUser user) {
+		if(user != null){      
+			if(!users.values().contains(user)){
+				user.setId(nextId());
+				user.setPosts(new ArrayList<Post>());
+			}
 
-    return removedUser;
-  }
-  
-  private int nextId(){
-    return Collections.max(users.keySet()) + 1;
-  }
+			users.put(user.getId(), user);
+			return user;
+
+		} else {
+			throw new RuntimeException("user can't be null");
+		}
+	}
+
+	public AppUser removeUser(Integer id) {
+		AppUser removedUser = getUser(id);
+		users.remove(id);
+
+		return removedUser;
+	}
+
+	private int nextId(){
+		return Collections.max(users.keySet()) + 1;
+	}
 }
