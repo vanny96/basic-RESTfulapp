@@ -16,9 +16,11 @@ import org.springframework.stereotype.Repository;
 @Profile("hashmap")
 public class PostRepositoryHash implements PostRepository {
   private Map<Integer, Post> posts;
+  
 
   public PostRepositoryHash(){
     posts = new HashMap<Integer, Post>();
+    
   }
 
   @Override
@@ -43,7 +45,7 @@ public class PostRepositoryHash implements PostRepository {
 
       return post;
     } else {
-      throw new RuntimeException("post or userIdmissing");
+      throw new RuntimeException("post or userId missing");
     }
   }
 
@@ -57,7 +59,7 @@ public class PostRepositoryHash implements PostRepository {
     if(posts.isEmpty()){
       id = 1;
     } else {
-      id = Collections.max(posts.keySet());
+      id = Collections.max(posts.keySet())+1;
     } 
     return id;
   }

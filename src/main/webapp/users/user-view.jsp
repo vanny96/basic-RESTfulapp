@@ -13,6 +13,8 @@
 	<br> 
 	Email: ${user.getEmail()}
 	<br>
+	
+	<a href="<c:url value="/posts/new"/>">New Post</a>
 
 	<div class="posts">
 		Posts:
