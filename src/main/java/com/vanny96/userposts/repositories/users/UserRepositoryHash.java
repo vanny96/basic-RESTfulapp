@@ -43,8 +43,8 @@ public class UserRepositoryHash implements UserRepository{
 
 		users.put(2, user2);
 
-		this.postRepository.savePost(new Post(null, null, "First post", "Body of first post", null), users.get(1));
-		this.postRepository.savePost(new Post(null, null, "Second post", "Body of second post", null), users.get(2));
+		this.postRepository.savePost(new Post(null, null, "First post", "Body of first post", users.get(1)));
+		this.postRepository.savePost(new Post(null, null, "Second post", "Body of second post", users.get(2)));
 
 	}
 

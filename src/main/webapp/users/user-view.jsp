@@ -14,7 +14,7 @@
 	Email: ${user.getEmail()}
 	<br>
 	
-	<a href="<c:url value="/posts/new"/>">New Post</a>
+	<a href="<c:url value="/posts/new?userId=${user.getId()}"/>">New Post</a>
 
 	<div class="posts">
 		Posts:

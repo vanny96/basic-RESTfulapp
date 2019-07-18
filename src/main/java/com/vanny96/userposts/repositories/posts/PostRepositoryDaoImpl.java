@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 
-import com.vanny96.userposts.models.AppUser;
 import com.vanny96.userposts.models.Post;
 
 import org.springframework.context.annotation.Profile;
@@ -40,13 +39,13 @@ public class PostRepositoryDaoImpl implements PostRepository {
   }
 
   @Override
-  public Post savePost(Post post, AppUser user) {
+  public Post savePost(Post post) {
     EntityManager em = emf.createEntityManager();
 
     em.getTransaction().begin();
 
-    post.setPoster(user);
     Post savedPost = em.merge(post);
+    
     em.getTransaction().commit();
 
     em.close();

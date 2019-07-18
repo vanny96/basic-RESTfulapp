@@ -50,10 +50,8 @@ public class PostsAPIController{
 
   @PostMapping("/posts")
   public Post savePost(@RequestBody Post post, @RequestHeader(name = "userId") Integer userId){
-    System.out.println("User id: " + userId);
     AppUser user = userService.getUser(userId);
-
-    System.out.println(user.getName());
-    return postService.savePost(post, user);
+    post.setPoster(user);
+    return postService.savePost(post);
   }
 }

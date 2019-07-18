@@ -26,7 +26,7 @@ public class PostsController {
 		this.userService = userService;
 	}
 
-	@GetMapping("/posts")
+	@GetMapping({"/","/posts"})
 	public ModelAndView getPosts(){
 		ModelAndView model = new ModelAndView("/posts/posts");
 		model.addObject("posts", postService.posts());
@@ -59,9 +59,9 @@ public class PostsController {
 
 	@PostMapping("/posts")
 	public String savePost(@ModelAttribute("post") Post post, @RequestParam("user") Integer userId){
-		System.out.println(userId);
 		AppUser user = userService.getUser(userId);
-		Post savedPost = postService.savePost(post, user);
+		post.setPoster(user);
+		Post savedPost = postService.savePost(post);
 		
 		return "redirect:/post/"+savedPost.getId();
 	}

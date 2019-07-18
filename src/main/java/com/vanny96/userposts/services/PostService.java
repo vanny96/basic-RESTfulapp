@@ -2,7 +2,6 @@ package com.vanny96.userposts.services;
 
 import java.util.List;
 
-import com.vanny96.userposts.models.AppUser;
 import com.vanny96.userposts.models.Post;
 import com.vanny96.userposts.repositories.posts.PostRepository;
 
@@ -26,8 +25,8 @@ public class PostService{
     return postRepository.getPost(id);
   }
 
-  public Post savePost(Post post, AppUser user) {
-    return postRepository.savePost(post, user);
+  public Post savePost(Post post) {
+    return postRepository.savePost(post);
   }
 
   public Post removePost(Integer id) {

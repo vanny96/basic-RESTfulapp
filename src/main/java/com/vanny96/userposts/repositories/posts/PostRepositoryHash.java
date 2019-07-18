@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.vanny96.userposts.models.AppUser;
 import com.vanny96.userposts.models.Post;
 
 import org.springframework.context.annotation.Profile;
@@ -34,14 +33,13 @@ public class PostRepositoryHash implements PostRepository {
   }
 
   @Override
-  public Post savePost(Post post, AppUser user) {
-    if( post != null && user != null){
+  public Post savePost(Post post) {
+    if( post != null){
 
       post.setId(getNextId());
       posts.put(post.getId(), post);
-
       
-      user.addPost(post);
+      post.getPoster().addPost(post);
 
       return post;
     } else {

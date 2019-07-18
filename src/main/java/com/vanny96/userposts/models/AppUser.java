@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "app_user")
 public class AppUser{
 	@Id
-	@GeneratedValue(generator = "user_generator")
+	@GeneratedValue()
 	@SequenceGenerator(name = "user_generator", sequenceName = "user_sequence")
 	private Integer id;
 

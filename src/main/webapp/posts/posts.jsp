@@ -13,7 +13,9 @@
 <body>
 	<c:forEach items="${posts}" var="post">
 		<div class="post">
-			<div class="title">${post.getTitle()}</div>
+			<div class="title">
+			<a href="post/${post.getId()}">${post.getTitle()}</a>
+			</div>
 			<div class="content">${post.getBody()}</div>
 			
 			Written by: <a href="/user/${post.getPoster().getId()}">
